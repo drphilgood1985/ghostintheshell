@@ -22,3 +22,4 @@ echo [>] Pushing to GitHub...
 git push -u origin main
 
 echo [✓] Push complete. Ghost has entered the shell.
+
