@@ -1,0 +1,19 @@
+C:\Projects\Ghost
+└── notion\
+|    ├── notionClient.mjs       // Auth + shared client
+|    ├── logMessage.mjs         // Add user message + context to Notion
+|    └── getMemory.mjs          // Retrieve last N messages for (user, channel)
+|
+├── .env.template
+├── .gitignore
+├── package.json
+├── start.bat
+├── index.mjs
+├── assistants\
+│   ├── gabby.mjs
+│   └── jason.mjs
+├── commands\
+│   ├── newcode.mjs
+│   └── info.mjs
+└── utils\
+    └── checkSyntax.mjs

@@ -1,0 +1,132 @@
+I want to build a discord bot to assist me in coding, named Ghost, using my openai api.  I want to use node and mjs.  this bot can be hosted and logged locally, but should have a git repository so I can pull the application to any computer I need it on.  do not use powershell.  I intend to interact with this bot on a private discord server called The Friend Zone.  I prefer to use cmd.  use only text and emojis which can be passed through a cmd prompt.  all batch files will be able to operate via cmd without powershell.  I plan to upload project files to the openai assistant and build in functions directly via the openai api dashboard.  the use case is the bot will open a channel for !newcode.  syntax will be !newcode name-of-the-channel.  code in a !info function.  code should be modular, clearly mark blocks for user comfort //like this.  the bot will use the api to converse with me via text in real time.  the complex language functions will be handled by a 4o gpt assistant, Gabby.  Code will be handled by an assistant named Jason.  He should be proficient in node, java, sql, and json.  optimize Jason for minimal verbosity and smooth code generation.  Gabby should be good at understanding context and communicating it to Jason.  Jason will process backend data translation passed by Gabby after correct discernment of intent.  Jason will process and export numbered executable code after passing a guardrail node --check FILENAME.  if node --check FILENAME returns an error, Jason will interpret the error log and self correct on a loop until code passes --check.  If Jason requires steering/intent context, he will ask Gabby.  Gabby will check with user if she cannot discern intent from existing chat log.  if she can discern intent, she will check her assumed intent with the user before passing it to Jason in a way he will understand and find actionable.  Gabby will translate user intent and communicate it to Jason, Jason will output the code, Gabby will handle all user interaction.  Jason will only talk to Gabby unless outputting code.  Theme Jason around the Friday the 13th character.  Theme Gabby after a waitress with a strong southern flavor.  
+
+1. Project Initialization
+ Define project folder structure (src/, assistants/, commands/, etc.)
+
+ Initialize package.json
+
+ Create .gitignore, .env.template
+
+ Create start.bat to launch via CMD
+
+2. Discord Bot Core
+ Set up index.mjs to connect to Discord and route messages
+
+ Register and handle:
+
+!newcode <name> → create/join project channel
+
+!info → print context and logs for current user/channel
+
+3. Gabby (Intent Parser)
+ Southern-waitress persona
+
+ Parses user input, checks for context
+
+ Confirms assumptions if uncertain
+
+ Translates intent for Jason in structured format
+
+4. Jason (Code Generator)
+ Friday-the-13th themed
+
+ Accepts tasks from Gabby only
+
+ Outputs executable code blocks
+
+ Loops node --check FILENAME to validate
+
+ Self-corrects and retries until clean
+
+5. Rolling Memory with Notion
+ Integrate Notion API using secret and database ID
+
+ Log each message by user ID + channel ID
+
+ Append intents, errors, and summaries per interaction
+
+ Fetch last N messages for GPT context
+
+ Include Notion integration setup in .env
+
+6. Messaging Logic
+ Gabby interacts with user
+
+ Jason only replies to Gabby unless code output
+
+ Errors logged locally and/or in Notion as needed
+
+7. Environment & Deployment
+ Fully local, CMD-launchable
+
+ .env keys:
+
+DISCORD_TOKEN
+
+OPENAI_API_KEY
+
+NOTION_SECRET
+
+NOTION_DB_ID
+
+ Git-enabled project directory
+
+✅ Hardened CMD Patch Scripting Rules
+1. Never Use else in for Loops
+❌ if CONDITION ( ... ) else ( ... )
+
+✅ Use two separate if blocks:
+
+bat
+Copy
+Edit
+if CONDITION (
+  echo match
+)
+if NOT CONDITION (
+  echo non-match
+)
+2. Enable Delayed Expansion Early
+bat
+Copy
+Edit
+setlocal enabledelayedexpansion
+Use !var! inside loops instead of %var%
+
+3. Redirect Using >> to Append to Files
+Always build output files incrementally:
+
+bat
+Copy
+Edit
+>>"%tempfile%" echo some content
+4. Create/Empty Temporary Output Files Upfront
+bat
+Copy
+Edit
+break > "%tempfile%"
+5. Use move /Y to Replace Files Safely
+bat
+Copy
+Edit
+move /Y "%tempfile%" "target.mjs" >nul
+6. Escape Characters for CMD Interpretation
+Escape |, <, >, &, ^, (, ) as needed
+
+Example:
+
+bat
+Copy
+Edit
+echo if a ^|^| b
+7. Always Use Full Paths via cd /d %~dp0
+Ensures scripts run in their own directory:
+
+bat
+Copy
+Edit
+cd /d %~dp0
+8. Avoid Non-ASCII Emojis
+✅ [OK], [->], =>, * are safe
+
+❌ Emojis like 👻, ⚙️, 📦 may cause crashes
